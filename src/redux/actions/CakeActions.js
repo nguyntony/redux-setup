@@ -1,4 +1,4 @@
-import BUY_CAKE from "./CakeTypes";
+import { BUY_CAKE } from "./CakeTypes";
 
 export const buyCake = () => {
   return {
