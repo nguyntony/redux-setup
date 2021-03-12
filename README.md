@@ -29,4 +29,11 @@ Redux is mainly formed about these three concepts.
 - redux
 - react-redux
 
+## Setup
+A brief explanation of what may be the best way to set up your redux. Start by creating the action and types then to reducers then lastly create the store and connect to react.
+
+### Action
+We created a redux dir that will hold all of our actions and reducers. Note that this folder structure may differ to another developers, just find what works best for you.
+
+In the action dir, we created a CakeAction and a CakeType, each storing their respective code. 
 
