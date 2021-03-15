@@ -15,7 +15,7 @@ function CakeContainer({ numOfCakes, buyCake }) {
 // this is all possible because of our export statement, we used the connect function
 const mapStateToProps = (state) => {
   return {
-    numOfCakes: state.numOfCakes,
+    numOfCakes: state.cake.numOfCakes,
   };
 };
 
