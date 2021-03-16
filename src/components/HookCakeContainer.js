@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { buyCake } from "../redux/actions/CakeActions";
 
 export default function HookCakeContainer() {
+  const [number, setNumber] = useState(1);
   const cake = useSelector((state) => state.cake);
   // this is accessing the redux store and we are accessing this property and storing it in this variable
   const dispatch = useDispatch();
   return (
     <div>
       <h2>Num of Cakes - {cake.numOfCakes}</h2>
-      <button onClick={() => dispatch(buyCake())}>buy cake</button>
+      <input
+        type="text"
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}
+      />
+      <button onClick={() => dispatch(buyCake(number))}>
+        buy {number} cake
+      </button>
     </div>
   );
 }
