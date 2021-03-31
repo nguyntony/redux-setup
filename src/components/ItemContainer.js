@@ -1,10 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+import { buyIceCream } from "../redux/actions/iceCreamAction";
+import { buyCake } from "../redux/actions/CakeActions";
 
-function ItemContainer({ item }) {
+function ItemContainer({ item, buyItem }) {
   return (
     <div>
       <h2>Item - {item}</h2>
+      <button onClick={buyItem}>Buy Items</button>
     </div>
   );
 }
@@ -23,4 +26,18 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(ItemContainer);
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const dispatchFunction = ownProps.cake
+    ? () => dispatch(buyCake())
+    : () => dispatch(buyIceCream());
+
+  return {
+    buyItem: dispatchFunction,
+  };
+};
+
+// note that the functions above demonstrate the second argument that can be passed to each function is ownProps which will allow the function to retrieve its own props when called such as in App.js and one of the given the cake prop.
+// now with the connect function there will be times where you need to connect the action creator to the component but you won't need to connect the state, in that scenario just put null as the first argument for the connect function
+
+// export default connect(null, mapDispatchToProps)(ItemContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemContainer);
